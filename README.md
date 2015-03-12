@@ -18,7 +18,7 @@ $ mkvirtualenv -p /usr/bin/python2.7 examplerest
 ```
 
 Update settings.py: (ignore the ... <snip> ...'s )
-```
+```python
 INSTALLED_APPS = (
     ... <snip> ...
     # Non Default APPS
@@ -42,7 +42,7 @@ Create our model:
 (examplerest)$ vim example/models.py
 ```
 example/models.py :
-```
+```python
 from django.conf import settings
 
 class Note(models.Model):
@@ -60,7 +60,7 @@ Create the tables and stuff in the database:
 Now to create the ViewSet for RESTfullness
 
 notes/views.py
-```
+```python
 from rest_framework import viewsets
 
 from .models import Note
@@ -74,7 +74,7 @@ class NotesViewSet(viewsets.ModelViewSet):
 And we need to make our NoteSerializer
 
 notes/serializers.py (you need to create this)
-```
+```python
 from rest_framework import serializers
 from .models import Note
 
@@ -86,7 +86,7 @@ class NoteSerializer(serializers.ModelSerializer):
 And now we just need to register the URL's to use them
 
 example/urls.py
-```
+```python
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
@@ -107,7 +107,7 @@ Oh, and we need to register our model with the admin site too (Not required,
 but nice to have)
 
 notes/admin.py
-```
+```python
 from django.contrib import admin
 
 from .models import Note
